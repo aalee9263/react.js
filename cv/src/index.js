@@ -7,17 +7,17 @@ function CV() {
   return (
     <html lang="en">
       <head>
-        <title>CV Using HTML</title>
+        <title> Responsive CV Using React</title>
         <link rel="stylesheet" href="style.css" />
       </head>
       <body>
         <div className="container">
           <div className="header">
-            <div className="img-area">
-              {/* <img src={arshad.jpg} alt="Image"/> */}
+            <div className="img-area"> 
+              <img src={"arshad.jpg"} alt="Image"/>
             </div>
             <h1>Arshad Ali</h1>
-            <h3>AI Chatbot Developer</h3>
+            <h3>AI Chatbot & Voice UI Developer</h3>
           </div>
 
           <div className="main">
@@ -41,11 +41,11 @@ function CV() {
                 <li>JAVAScrpit</li>
                 <li>Node.js</li>
                 <li>React</li>
-                <li>Shorthand</li>
+                <li>Mongodb</li>
               </ul>
               <h2>Soft Skills</h2>
               <ul>
-                <li>Teaching</li>
+                {/* <li>Teaching</li> */}
                 <li>Team Work</li>
                 <li>Problem Solving</li>
                 <li>Communication</li>
