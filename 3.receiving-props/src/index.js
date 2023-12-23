@@ -26,7 +26,18 @@ const Post = ({name,body,imgUrl }) => (
       <h3>{name}</h3>
       <span>23 Dec 2023</span>
       <p>{body}</p>
-      <img width={300} src={imgUrl} ></img>
+
+
+     {/* <img width={300} src={imgUrl} ></img> */}
+    {/* ternary operator for image */}
+      { (imgUrl) ? <img width={300} src={imgUrl} ></img> : null
+
+      }
+
+{/* another ternary operator for img */}
+
+{/* imgUrl && (imgUrl) ? <img width={300} src={imgUrl} ></img> */}
+
       <br/>
       <button>Like</button>
       <button>Comment</button>
