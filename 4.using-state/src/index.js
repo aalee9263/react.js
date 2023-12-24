@@ -12,7 +12,7 @@ const Home = () => {
   //   <button onClick={()=> setLit(!isLit)}>Change State</button>
   // }
 
-  // return <div className={(isLit) ? "room lit" : "room dark"}>  
+  // return <div className={(isLit) ? "room lit" : "room dark"}> one another way is under mention  
   return <div className={`room ${(isLit) ? "lit" : "dark"}`}>  
     <p>Light is {(isLit) ? "On" : "Off"}</p>
     {/* <button onClick={()=> setLit(!isLit)}>Change State</button> one anoother way is under mentioned */}
