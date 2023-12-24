@@ -9,8 +9,7 @@ const Home = () => {
 
   // const changeState = () => {
   //   setLit(!isLit) one another way as mentioned in line no 16.
-  //   <button onClick={()=> setLit(!isLit)}>Change State</button>
-  // }
+  //}
 
   // return <div className={(isLit) ? "room lit" : "room dark"}> one another way is under mention  
   return <div className={`room ${(isLit) ? "lit" : "dark"}`}>  

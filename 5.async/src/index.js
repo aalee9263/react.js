@@ -52,7 +52,7 @@ return <div className={`room ${(isLit) ? "lit" : "dark"}`}>
 
 <p>Light is {(isLit) ? "On" : "Off"}</p>
 <button onClick={()=> {setLit(!isLit)}}>
-  Turn {(isLit) ? "On" : "Off"}</button>
+  Turn {(isLit) ? "Off" : "On"}</button>
 
 
 
