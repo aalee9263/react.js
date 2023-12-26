@@ -7,10 +7,10 @@ import './App.css';
 function App () {
 
 const [cityName, setCityName] = useState("");
+const [isLoading, setIsLoading] = useState(false);
 const inputRef = useRef(null);
 
-const [data, setData] = useState(null)
-
+const [data, setData] = useState([]);
 
 const getWeather = async(event) => {
   event.preventDefault();
@@ -20,12 +20,18 @@ const getWeather = async(event) => {
   // console.log(`getting weather of ${cityName}....`)// anothery way is under mention of taking inut value  
   console.log(`getting weather of ${inputRef.current.value}....`)
   
-try {  const response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=62ba1f4835a74125a99140600232612&q=${inputRef.current.value}&aqi=no`)
+try { 
+    setIsLoading(true) 
+      
+    const response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=62ba1f4835a74125a99140600232612&q=${inputRef.current.value}&aqi=no`)
 
-     console.log("response:", response.data)
+    console.log("response:", response.data)
+
+    setIsLoading(false)
+    setData(response.data);
     
-     setData(response.data);
     } catch (e) {
+      setIsLoading(false)
       console.log(e)
     }
 };
@@ -58,14 +64,21 @@ const changeHandler = (event) => {
     <br />
     <br />
 
-{/* /here is ternary operator if data is not shown on user screen then "No Data will display here" */}
-    {data?.location?.name ? ( 
 
+    {isLoading ? <div>Loading...</div> : null }
+
+{/* /here is ternary operator if data is not shown on user screen then "No Data will display here" */}
+  
+    {data.length ? ( 
+
+    data.map((eachWeatherData, index) =>{
     <div>
-      cityName: {data?.location?.name} <br /> {data?.location?.country}
+      cityName: {location?.name} <br /> {location?.country}
       <br />
-      temp: {data?.current?.temp_c}
+      temp: {current?.temp_c}
     </div>
+
+      })
     ) : ( 
     <div>No Data</div>
     )}
