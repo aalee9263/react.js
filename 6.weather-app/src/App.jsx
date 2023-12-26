@@ -9,6 +9,8 @@ function App () {
 const [cityName, setCityName] = useState("");
 const inputRef = useRef(null);
 
+const [data, setData] = useState(null)
+
 
 const getWeather = async(event) => {
   event.preventDefault();
@@ -21,14 +23,16 @@ const getWeather = async(event) => {
 try {  const response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=62ba1f4835a74125a99140600232612&q=${inputRef.current.value}&aqi=no`)
 
      console.log("response:", response.data)
+    
+     setData(response.data);
     } catch (e) {
-
+      console.log(e)
     }
 };
 
 const changeHandler = (event) => {
   setCityName(event.target.value)
-  console.log("changeHandler:", event.target.value)
+  // console.log("changeHandler:", event.target.value)
 }
 
 
@@ -49,6 +53,14 @@ const changeHandler = (event) => {
     <br />
     <button type="submit"> Get Weather </button>
     </form>
+
+    <div>
+      cityName: {data?.location?.name} <br /> {data?.location?.country}
+      <br />
+      temp: {data?.current?.temp_c}
+    </div>
+
+
     </div>
   );
 }
