@@ -12,7 +12,7 @@ const getWeather = (event) => {
   // under mentio method of taking input is not prefered..
   // const cityName = document.querySelector("#cityName").value;
   // console.log(`getting weather of ${cityName}....`)  // another way is under mention....
-   console.log(`getting weather of ${cityName}....`)  
+  console.log(`getting weather of ${cityName}....`)  
 };
 
 const changeHandler = (event) => {
@@ -28,9 +28,9 @@ const changeHandler = (event) => {
       <label htmlFor="cityName">City:</label>
       <input type="text" id="cityName" maxLength={20} minLength={2} required 
       onChange={changeHandler}/>
-    </form>
     <br />
     <button type="submit"> Get Weather </button>
+    </form>
     </div>
   );
 }
