@@ -31,7 +31,9 @@ try {
     //this is method (spread operator) if user previous card(data) also want to seen on screen. suppose he want to see different cities temperature
     // and under mention method is for store data in array ...data.
     setData([response.data, ...data]);
-    
+    //undermentiond code is for reset of form for renew entry from user
+    event.target.reset();
+
     console.log(data)
     
     } catch (e) {
@@ -76,7 +78,7 @@ const changeHandler = (event) => {
     {data.length ? ( 
 
     data.map((eachWeatherData, index) =>(
-    <div>
+    <div key={index}>
       cityName:{eachWeatherData?.location?.name} <br /> {eachWeatherData?.location?.country}
       <br />
       temp: {eachWeatherData?.current?.temp_c}
