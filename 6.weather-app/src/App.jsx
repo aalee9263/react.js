@@ -54,13 +54,21 @@ const changeHandler = (event) => {
     <button type="submit"> Get Weather </button>
     </form>
 
+    <br />
+    <br />
+    <br />
+
+{/* /here is ternary operator if data is not shown on user screen then "No Data will display here" */}
+    {data?.location?.name ? ( 
+
     <div>
       cityName: {data?.location?.name} <br /> {data?.location?.country}
       <br />
       temp: {data?.current?.temp_c}
     </div>
-
-
+    ) : ( 
+    <div>No Data</div>
+    )}
     </div>
   );
 }
