@@ -26,9 +26,13 @@ try {
     const response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=62ba1f4835a74125a99140600232612&q=${inputRef.current.value}&aqi=no`)
 
     console.log("response:", response.data)
-
     setIsLoading(false)
-    setData(response.data);
+    
+    //this is method (spread operator) if user previous card(data) also want to seen on screen. suppose he want to see different cities temperature
+    // and under mention method is for store data in array ...data.
+    setData([response.data, ...data]);
+    
+    console.log(data)
     
     } catch (e) {
       setIsLoading(false)
@@ -71,14 +75,14 @@ const changeHandler = (event) => {
   
     {data.length ? ( 
 
-    data.map((eachWeatherData, index) =>{
+    data.map((eachWeatherData, index) =>(
     <div>
-      cityName: {location?.name} <br /> {location?.country}
+      cityName:{eachWeatherData?.location?.name} <br /> {eachWeatherData?.location?.country}
       <br />
-      temp: {current?.temp_c}
+      temp: {eachWeatherData?.current?.temp_c}
     </div>
 
-      })
+    ))
     ) : ( 
     <div>No Data</div>
     )}
