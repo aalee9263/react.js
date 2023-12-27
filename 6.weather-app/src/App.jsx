@@ -11,7 +11,6 @@ function App () {
 const [cityName, setCityName] = useState("");
 const [isLoading, setIsLoading] = useState(false);
 const inputRef = useRef(null);
-
 const [data, setData] = useState([]);
 
 const getWeather = async(event) => {
