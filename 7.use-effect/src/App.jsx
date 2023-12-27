@@ -11,6 +11,8 @@ function App() {
   const [isLoading, setIisLoading] = useState(false);
   const inputRef = useRef(null);
   const [data, setData] = useState([]);
+  const [currentWeather, setCurrentWeather] = useState(null)
+
 
   useEffect(() =>{
     
@@ -21,6 +23,8 @@ function App() {
         (`http://api.weatherapi.com/v1/current.json?key=62ba1f4835a74125a99140600232612&q=${position.coords.latitude},${position.coords.longitude}&aqi=no`)
         
         console.log("response:", response.data)
+
+        setCurrentWeather(response.data);
 
       });
       } else {
@@ -76,14 +80,17 @@ function App() {
      <br />
 
      { isLoading ? <div>Loading...</div> : null }
-
+     {data.length || currentWeather ? null : <div>No Data</div>}
      {data.length ? (
       data.map((eachWeatherData, index)=>(
         <WeatherCard key={index} data={eachWeatherData}/>
       ))  
-     ) : (
-    <div>No Data</div>
-    )}  
+     ) : 
+    null
+      }
+
+    {currentWeather && <div WeatherCard data={currentWeather}/>}
+
     </div>
   );
 }
