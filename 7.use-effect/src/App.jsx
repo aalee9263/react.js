@@ -30,6 +30,10 @@ function App() {
       } else {
         console.log ("Geolocation is not supported by this browser.");
       }
+
+      return ()=>{
+          // socket.close();
+      }
     }, []);
 
 
@@ -89,7 +93,7 @@ function App() {
     null
       }
 
-    {currentWeather && <div WeatherCard data={currentWeather}/>}
+    {currentWeather && <WeatherCard data={currentWeather}/>}
 
     </div>
   );
