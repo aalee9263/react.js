@@ -3,6 +3,8 @@ import axios from 'axios'
 
 import logo from './logo.svg';
 import './App.css';
+import WeatherCard from './components/WeatherCard'
+
 
 function App () {
 
@@ -17,7 +19,7 @@ const getWeather = async(event) => {
   // under mentio method of taking input is not prefered..
   // const cityName = document.querySelector("#cityName").value;
   // console.log(`getting weather of ${cityName}....`)  // another way is under mention....
-  // console.log(`getting weather of ${cityName}....`)// anothery way is under mention of taking inut value  
+  // console.log(`getting weather of ${cityName}....`)// anothery way is under mention of taking input value  
   console.log(`getting weather of ${inputRef.current.value}....`)
   
 try { 
@@ -74,16 +76,11 @@ const changeHandler = (event) => {
     {isLoading ? <div>Loading...</div> : null }
 
 {/* /here is ternary operator if data is not shown on user screen then "No Data will display here" */}
-  
+
     {data.length ? ( 
 
     data.map((eachWeatherData, index) =>(
-    <div key={index}>
-      cityName:{eachWeatherData?.location?.name} <br /> {eachWeatherData?.location?.country}
-      <br />
-      temp: {eachWeatherData?.current?.temp_c}
-    </div>
-
+        <WeatherCard key={index} data={eachWeatherData}/>
     ))
     ) : ( 
     <div>No Data</div>
