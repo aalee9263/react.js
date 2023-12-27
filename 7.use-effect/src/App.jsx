@@ -1,7 +1,7 @@
 import axios from 'axios'
 // import logo from './logo.svg';
 import './App.css';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import WeatherCard from './components/WeatherCard'
 
 
@@ -11,6 +11,24 @@ function App() {
   const [isLoading, setIisLoading] = useState(false);
   const inputRef = useRef(null);
   const [data, setData] = useState([]);
+
+  useEffect(() =>{
+    
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition( async (position)=>{
+        console.log("position:", position)
+        const response = await axios.get 
+        (`http://api.weatherapi.com/v1/current.json?key=62ba1f4835a74125a99140600232612&q=${position.coords.latitude},${position.coords.longitude}&aqi=no`)
+        
+        console.log("response:", response.data)
+
+      });
+      } else {
+        console.log ("Geolocation is not supported by this browser.");
+      }
+    }, []);
+
+
 
   const getWeather = async(event) => {
     event.preventDefault();
