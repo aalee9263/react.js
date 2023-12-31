@@ -26,7 +26,6 @@ app.use(morgan('combined'));
 
 
 app.get("/products", async (req, res) => {
-
   const cursor = productsCollection.find({});
 
   try {
